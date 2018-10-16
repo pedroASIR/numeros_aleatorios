@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #audio{
+            display: none;
+        }
+        body {
+            text-align: center;
+            background-image: url(imagenes/fondo.jpg);
+        }
+        #titulo{
+            text-align: center;
+            font-family: fantasy;
+            color: fuchsia;
+            font-size: 60px;            
+        }
+        #descripcion{
+            
+            font-family: fantasy;
+            color: chartreuse;
+            font-size: 35px; 
+        }
+        #resultado{
+            font-family: fantasy;
+            font-size: 80px;
+        }
+        #valor_minimo,#valor_maximo{
+            width: 5em;
+        }
+        img{
+            width: 30em;
+            height: 20em;
+        }
+        
+    </style>
+    <script>
+        //Todo el programa se ejecutará al cargar la página para evitar problemas con el DOM
+        window.onload = function(){
+        var boton = document.getElementById("generar_numero");
+        boton.onclick = function(){
+            //Declaracion de variables necesarias
+            var min = parseInt(document.getElementById("valor_minimo").value);
+            var max = parseInt(document.getElementById("valor_maximo").value);
+            var introducir_resultado = document.getElementById("resultado");
+            var cambiar_imagen = document.getElementById("imagen");
+            var cambiar_sonido = document.getElementById("audio");
+            //Funcion que genera el número aleatorio, lo almacena en la variable resultado y lo muestra como texto en el html
+            function aleatorio(min,max){
+                resultado = Math.floor( (Math.random()* (max-min+1)) ) + min;  // Variable resultado es global
+                console.log(resultado);
+                document.getElementById("resultado").innerHTML = resultado;
+            }
+            //Sentencia if para validar que el campo min es menor que el campo max
+            if (min > max){
+                alert("El campo mínimo es mayor que el campo máximo, por favor introduce valores aceptados");
+                introducir_resultado.innerHTML = "ERROR!";
+                cambiar_imagen.src = "imagenes/error.jpg"; //Si da error en la validación no quiero que muestre imagen
+            }else{
+            aleatorio(min,max); //Llamada a la funcion aleatorio
+                cambiar_imagen.style = "display: inline";//Si no da error muestra la imagen 
+            //Sentencia switch para cambiar la imagen y el sonido dependiendo del valor de la variable resultado
+            switch(resultado){
+                case 0: 
+                    cambiar_imagen.src = "imagenes/0.png";
+                    cambiar_imagen.setAttribute("alt","cero");
+                    document.getElementById("audio2").setAttribute = "muted";
+                    cambiar_sonido.src = "sonidos/0.ogg";
+                    break;
+                case 1:
+                    cambiar_imagen.src = "imagenes/1.png";
+                    cambiar_imagen.setAttribute("alt","uno");
+                    cambiar_sonido.src = "sonidos/1.ogg";
+                    break;
+                case 2:
+                    cambiar_imagen.src = "imagenes/2.png";
+                    cambiar_imagen.setAttribute("alt","dos");
+                    cambiar_sonido.src = "sonidos/2.ogg";
+                    break;
+                case 3:
+                    cambiar_imagen.src = "imagenes/3.png";
+                    cambiar_imagen.setAttribute("alt","tres");
+                    cambiar_sonido.src = "sonidos/3.ogg";
+                    break;
+                case 4:
+                    cambiar_imagen.src = "imagenes/4.png";
+                    cambiar_imagen.setAttribute("alt","cuatro");
+                    cambiar_sonido.src = "sonidos/4.ogg";
+                    break;
+                case 5:
+                    cambiar_imagen.src = "imagenes/5.png";
+                    cambiar_imagen.setAttribute("alt","cinco");
+                    cambiar_sonido.src = "sonidos/5.ogg";
+                    break;
+                case 6:
+                    cambiar_imagen.src = "imagenes/6.png";
+                    cambiar_imagen.setAttribute("alt","seis");
+                    cambiar_sonido.src = "sonidos/6.ogg";
+                    break;
+                case 7:
+                    cambiar_imagen.src = "imagenes/7.png";
+                    cambiar_imagen.setAttribute("alt","siete");
+                    cambiar_sonido.src = "sonidos/7.ogg";
+                    break;
+                case 8:
+                    cambiar_imagen.src = "imagenes/8.png";
+                    cambiar_imagen.setAttribute("alt","ocho");
+                    cambiar_sonido.src = "sonidos/8.ogg";
+                    break;
+                case 9:
+                    cambiar_imagen.src = "imagenes/9.png";
+                    cambiar_imagen.setAttribute("alt","nueve");
+                    cambiar_sonido.src = "sonidos/9.ogg";
+                    break;
+                case 10:
+                    cambiar_imagen.src = "imagenes/10.png";
+                    cambiar_imagen.setAttribute("alt","diez");
+                    cambiar_sonido.src = "sonidos/10.ogg";
+                    break;
+                case 20:
+                    cambiar_imagen.src = "imagenes/20.png";
+                    cambiar_imagen.setAttribute("alt","veinte");
+                    cambiar_sonido.src = "sonidos/20.ogg";
+                    break;
+                case 30:
+                    cambiar_imagen.src = "imagenes/30.png";
+                    cambiar_imagen.setAttribute("alt","treinta");
+                    cambiar_sonido.src = "sonidos/30.ogg";
+                    break;
+                default:
+                    cambiar_imagen.src = "imagenes/numeros.png";
+                    cambiar_imagen.setAttribute("alt","numeros");
+                    cambiar_sonido.src = "sonidos/numero.ogg";
+                    break;
+                }
+            } 
+        }
+    }
+        //Funcion que valida que solo se pueda introducir numeros en los campos input
+        function valida(evento){
+            tecla = (document.all) ? evento.keyCode : evento.which;
+            //Tecla de retroceso para borrar, siempre la permite
+            if (tecla==8){
+        return true;
+            }    
+            // Patron de entrada, en este caso solo acepta numeros
+            patron =/[0-9]/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+            }
+    </script>
+</head>
+
+<body>
+    <h1 id="titulo">Generar número aleatorio</h1>
+    <h3 id="descripcion">Seleccione valor mínimo y máximo para el rango de valores a generar</h3>
+    <div id="div1">
+        <p>Mínimo: <input id="valor_minimo" type="text" onkeypress="return valida(event)"> Máximo: <input id="valor_maximo" type="text" onkeypress="return valida(event)"></p>
+        <p> <input id="generar_numero" type="button" value="Generar aleatorio"> </p>
+    </div>
+    <div id="div2">
+        <h1 id="resultado"></h1>
+        <img id="imagen" src='imagenes/numeros.png' alt="numero">
+    </div>
+    <audio id="audio" controls="controls" src="sonidos/musica_fondo.ogg" autoplay></audio>
+</body>
+
+</html>
