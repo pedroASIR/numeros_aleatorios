@@ -11,6 +11,7 @@
         body {
             text-align: center;
             background-image: url(imagenes/fondo.jpg);
+            background-size: cover;
         }
         #titulo{
             font-family: fantasy;
@@ -65,7 +66,6 @@
                 cambiar_imagen.src = "imagenes/error.jpg"; //En caso de error muestra una imagen de error
             }else{
             aleatorio(min,max); //Llamada a la funcion aleatorio
-                //cambiar_imagen.style = "display: inline";//Si no da error muestra la imagen 
             //Sentencia switch para cambiar la imagen y el sonido dependiendo del valor de la variable resultado
             switch(resultado){
                 case 0: 
