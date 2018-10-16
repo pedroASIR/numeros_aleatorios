@@ -72,6 +72,8 @@
             if (min > max){
                 alert("El campo mínimo es mayor que el campo máximo, por favor introduce valores aceptados");
                 introducir_resultado.innerHTML = "ERROR!";
+                document.getElementById("valor_minimo").value = ""; //Vacía un campo input
+                document.getElementById("valor_maximo").value = ""; //Vacía otro campo input
                 cambiar_imagen.src = "imagenes/error.jpg"; //En caso de error muestra una imagen de error
             }else{
             aleatorio(min,max); //Llamada a la funcion aleatorio
