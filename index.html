@@ -5,13 +5,14 @@
     <title>Números aleatorios</title>
     <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
     <style>
+        
         #audio{
-            display: none;
+            display: none; /*Esconde el menú de audio*/
         }
         body {
-            text-align: center;
-            background-image: url(imagenes/fondo.jpg);
-            background-size: cover;
+            text-align: center; /*Alinea todo el body al centro*/
+            background-image: url(imagenes/fondo.jpg); /*Coloca una imagen como fondo de la página*/
+            background-size: cover; /*Ajusta la imagen de fondo a la página*/
         }
         #titulo{
             font-family: fantasy;
@@ -23,6 +24,12 @@
             color: chartreuse;
             font-size: 35px; 
         }
+        #div1{
+            border: solid 5px red;
+            width: 25em;
+            margin-left: auto;
+            margin-right: auto;
+        }        
         #resultado{
             font-family: fantasy;
             font-size: 80px;
@@ -31,9 +38,11 @@
             width: 5em;
         }
         img{
+            border: dashed 5px black;
             width: 30em;
             height: 20em;
-        }      
+        }
+        
     </style>
     <script>
         //Todo el programa se ejecutará al cargar la página para evitar problemas con el DOM
@@ -162,11 +171,11 @@
 <body>
     <h1 id="titulo">Generar número aleatorio</h1>
     <h3 id="descripcion">Seleccione valor mínimo y máximo para el rango de valores a generar</h3>
-    <div id="div1">
+    <div id="div1"><!--div donde colocaremos los 3 input-->
         <p>Mínimo: <input id="valor_minimo" type="text" onkeypress="return valida(event)"> Máximo: <input id="valor_maximo" type="text" onkeypress="return valida(event)"></p>
         <p> <input id="generar_numero" type="button" value="Generar aleatorio"> </p>
     </div>
-    <div id="div2">
+    <div id="div2"><!--div donde colocaremos el resultado y la imagen-->
         <h1 id="resultado"></h1>
         <img id="imagen" src='imagenes/numeros.png' alt="numero">
     </div>
