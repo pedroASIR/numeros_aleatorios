@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -14,13 +13,11 @@
             background-image: url(imagenes/fondo.jpg);
         }
         #titulo{
-            text-align: center;
             font-family: fantasy;
             color: fuchsia;
             font-size: 60px;            
         }
         #descripcion{
-            
             font-family: fantasy;
             color: chartreuse;
             font-size: 35px; 
@@ -35,8 +32,7 @@
         img{
             width: 30em;
             height: 20em;
-        }
-        
+        }      
     </style>
     <script>
         //Todo el programa se ejecutará al cargar la página para evitar problemas con el DOM
@@ -44,8 +40,8 @@
         var boton = document.getElementById("generar_numero");
         boton.onclick = function(){
             //Declaracion de variables necesarias
-            var min = parseInt(document.getElementById("valor_minimo").value);
-            var max = parseInt(document.getElementById("valor_maximo").value);
+            var min = document.getElementById("valor_minimo").value;
+            var max = document.getElementById("valor_maximo").value;
             var introducir_resultado = document.getElementById("resultado");
             var cambiar_imagen = document.getElementById("imagen");
             var cambiar_sonido = document.getElementById("audio");
@@ -55,7 +51,12 @@
                 console.log(resultado);
                 document.getElementById("resultado").innerHTML = resultado;
             }
-            //Sentencia if para validar que el campo min es menor que el campo max
+            //Sentencia if para validar que los campos min y max no están vacíos y min es menor que el campo max
+            if(min == "" || max ==""){
+                alert("Uno de los campos está vacío, por favor rellena los dos campos");
+            }else{
+                min = parseInt(min);
+                max = parseInt(max);
             if (min > max){
                 alert("El campo mínimo es mayor que el campo máximo, por favor introduce valores aceptados");
                 introducir_resultado.innerHTML = "ERROR!";
@@ -136,8 +137,9 @@
                     cambiar_imagen.setAttribute("alt","numeros");
                     cambiar_sonido.src = "sonidos/numero.ogg";
                     break;
-                }
-            } 
+                     }
+                 }
+             }
         }
     }
         //Funcion que valida que solo se pueda introducir numeros en los campos input
