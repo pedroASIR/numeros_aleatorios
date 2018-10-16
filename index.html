@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Números aleatorios</title>
     <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
     <style>
         #audio{
@@ -51,19 +51,21 @@
                 console.log(resultado);
                 document.getElementById("resultado").innerHTML = resultado;
             }
-            //Sentencia if para validar que los campos min y max no están vacíos y min es menor que el campo max
+            //Sentencia if para validar que los campos min y max no están vacíos 
             if(min == "" || max ==""){
                 alert("Uno de los campos está vacío, por favor rellena los dos campos");
             }else{
-                min = parseInt(min);
+                //Se convierten las variables a variables de tipo numérico
+                min = parseInt(min); 
                 max = parseInt(max);
+            //Sentencia if para validar que min es menor que el campo max
             if (min > max){
                 alert("El campo mínimo es mayor que el campo máximo, por favor introduce valores aceptados");
                 introducir_resultado.innerHTML = "ERROR!";
-                cambiar_imagen.src = "imagenes/error.jpg"; //Si da error en la validación no quiero que muestre imagen
+                cambiar_imagen.src = "imagenes/error.jpg"; //En caso de error muestra una imagen de error
             }else{
             aleatorio(min,max); //Llamada a la funcion aleatorio
-                cambiar_imagen.style = "display: inline";//Si no da error muestra la imagen 
+                //cambiar_imagen.style = "display: inline";//Si no da error muestra la imagen 
             //Sentencia switch para cambiar la imagen y el sonido dependiendo del valor de la variable resultado
             switch(resultado){
                 case 0: 
